@@ -1,0 +1,41 @@
+description: A Profile for Creating a JBoss 7.1 EAP Project
+instructions: |
+
+    Prior to deploying the application you should configure the JNDI data source correctly by modifying "standalone/configuration/standalone.xml" to include the production datasource. For example for HSQLDB:
+
+    <datasource jndi-name="java:jboss/datasources/MyDataSource" pool-name="MyDataSource">
+        <connection-url>jdbc:h2:/path/to/prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+        <driver>com.h2database</driver>
+        <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+        <pool>
+            <min-pool-size>10</min-pool-size>
+            <max-pool-size>100</max-pool-size>
+            <prefill>true</prefill>
+        </pool>
+        <security>
+            <user-name>sa</user-name>
+        </security>
+        <statement>
+            <prepared-statement-cache-size>32</prepared-statement-cache-size>
+            <share-prepared-statements>true</share-prepared-statements>
+        </statement>
+    </datasource>
+features:
+    defaults: 
+        - asset-pipeline
+dependencies:
+  build:
+      - 'org.grails.plugins:hibernate5:6.0.4'
+  excludes:
+    - "org.springframework.boot:spring-boot-starter-tomcat:*"
+    - "org.springframework.boot:spring-boot-starter-actuator:*"
+  provided:
+    - "org.springframework.boot:spring-boot-starter-tomcat"
+    - "javax.servlet:javax.servlet-api:3.0.1"
+  runtime:
+    - 'javax.xml.bind:jaxb-api:2.2.12'
+  compile:
+    - "org.hibernate:hibernate-validator:4.3.2.Final"
+    - "org.grails.plugins:hibernate5"
+    - "org.hibernate:hibernate-core:5.1.2.Final"
+    - "org.hibernate:hibernate-ehcache:5.1.2.Final"  

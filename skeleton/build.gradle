@@ -1,0 +1,5 @@
+
+// Repackage disabled for JBoss
+bootRepackage.enabled = false
+// Use equivalent Tomcat version to Jboss-Web
+ext['tomcat.version'] = '7.0.72'
