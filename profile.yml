@@ -31,7 +31,7 @@ dependencies:
     - "org.springframework.boot:spring-boot-starter-actuator:*"
   provided:
     - "org.springframework.boot:spring-boot-starter-tomcat"
-    - "javax.servlet:javax.servlet-api:3.0.1"
+    - "javax.servlet:javax.servlet-api:4.0.1"
   runtime:
     - 'javax.xml.bind:jaxb-api:2.2.12'
     - "com.h2database:h2"
